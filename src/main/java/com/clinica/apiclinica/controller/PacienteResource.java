@@ -4,10 +4,10 @@ import com.clinica.apiclinica.model.Paciente;
 import com.clinica.apiclinica.services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -21,6 +21,13 @@ public class PacienteResource {
     public ResponseEntity <List<Paciente>> buscarTodosPaciente(){
        List<Paciente> obj = service.buscarTodos();
        return ResponseEntity.ok().body(obj);
+    }
+
+    @PostMapping
+    public ResponseEntity <Paciente> inserir(@RequestBody Paciente obj){
+        obj = service.salvar(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{/id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).body(obj);
     }
 
 }

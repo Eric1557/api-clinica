@@ -15,16 +15,18 @@ public class Paciente implements Serializable {
     private String nome;
     private String email;
     private String telephone;
+    private String cpf;
 
     public Paciente(){
     }
 
-    public Paciente(Long id, String nome, String email, String telephone) {
+    public Paciente(Long id, String nome, String email, String telephone,String cpf) {
         super();
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.telephone = telephone;
+        this.cpf = cpf;
     }
 
     public Long getId() {
@@ -62,6 +64,14 @@ public class Paciente implements Serializable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getCpf(){
+        return cpf;
+    }
+
+    public void setCpf(String cpf){
+        this.cpf = cpf;
     }
 
     @Override

@@ -15,9 +15,11 @@ public class PacienteService {
 
     public List<Paciente> buscarTodos(){
          return repository.findAll();
-
     }
 
+    public Paciente salvar(Paciente paciente){
+        return repository.save(paciente);
+    }
 
 
 

@@ -20,8 +20,8 @@ public class TesteConfig implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
 
-        Paciente p1 = new Paciente(null,"Eric","eric@gmail.com","99999999");
-        Paciente p2 = new Paciente(null,"Davi","davi@gmail.com","99999999");
+        Paciente p1 = new Paciente(null,"Eric","eric@gmail.com","99999999","12345");
+        Paciente p2 = new Paciente(null,"Davi","davi@gmail.com","88888888","123456");
 
         pacienteRepository.saveAll(Arrays.asList(p1,p2));
 
