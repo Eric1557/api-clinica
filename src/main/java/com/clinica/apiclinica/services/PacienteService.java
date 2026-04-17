@@ -13,7 +13,7 @@ public class PacienteService {
     @Autowired
     private PacienteRepository repository;
 
-    public List<Paciente> buscarTodos(){
+    public List<Paciente> buscarPaciente(){
          return repository.findAll();
     }
 

@@ -15,8 +15,14 @@ public class ConsultaService {
 
     public List<Consulta> buscarConsulta(){
         return consultaRepository.findAll();
-        
+
     }
+
+    public Consulta SalvarConsulta(Consulta consulta){
+        return consultaRepository.save(consulta);
+    }
+
+
 
 
 

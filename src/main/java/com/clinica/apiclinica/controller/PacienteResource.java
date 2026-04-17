@@ -18,13 +18,13 @@ public class PacienteResource {
     private PacienteService service;
 
     @GetMapping
-    public ResponseEntity <List<Paciente>> buscarTodosPaciente(){
-       List<Paciente> obj = service.buscarTodos();
+    public ResponseEntity <List<Paciente>> buscarPaciente(){
+       List<Paciente> obj = service.buscarPaciente();
        return ResponseEntity.ok().body(obj);
     }
 
     @PostMapping
-    public ResponseEntity <Paciente> inserir(@RequestBody Paciente obj){
+    public ResponseEntity <Paciente> inserirPaciente(@RequestBody Paciente obj){
         obj = service.salvar(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{/id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
