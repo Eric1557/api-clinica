@@ -1,5 +1,6 @@
 package com.clinica.apiclinica.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -13,16 +14,24 @@ public class Consulta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonFormat(shape= JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'",timezone = "GMT")
     private Instant data_consulta;
+
+
     private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name="paciente_id")
+    private Paciente paciente;
 
     public Consulta(){
     }
 
-    public Consulta(Long id, Instant data_consulta, String descricao) {
+    public Consulta(Long id, Instant data_consulta, String descricao,Paciente paciente) {
         this.id = id;
         this.data_consulta = data_consulta;
         this.descricao = descricao;
+        this.paciente = paciente;
     }
 
     public Long getId() {
@@ -48,6 +57,15 @@ public class Consulta implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public Paciente getPaciente(){
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente){
+         this.paciente = paciente;
+    }
+
 
     @Override
     public boolean equals(Object o) {
